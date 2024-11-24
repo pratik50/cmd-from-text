@@ -21,7 +21,7 @@ async function getCommandFromAiGPT(userInput) {
       const commandText = result.response.candidates[0].content.parts[0].text;
 
       const cleanCommand = commandText
-        .replace(/```bash|```/g, "") // Remove markdown-style code blocks
+        .replace(/```bash|```/g, "") 
         .trim();
 
       return cleanCommand;
@@ -29,7 +29,7 @@ async function getCommandFromAiGPT(userInput) {
       console.error(chalk.bold.red("Command not found."));
     }
 
-    return null; // Return null if no command is found
+    return null;
   } catch (error) {
     console.error(chalk.bold.red("Error communicating with Intelligence:", error.message));
     return null; 
@@ -94,7 +94,7 @@ async function runCLI() {
     ]);
 
     if (confirm) {
-      // Run the command using shelljs
+
       shell.exec(Command);
       console.log(chalk.bold.green("Command successfully execute"));
     } else {
@@ -105,5 +105,5 @@ async function runCLI() {
   }
 }
 
-// Run the CLI
+// Calling the CLI
 runCLI();
